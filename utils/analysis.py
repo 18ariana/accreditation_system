@@ -5,8 +5,8 @@ from .db_manage import get_users_work_experience_by_blank_id
 def arr2df(arr):
 
     df = pd.DataFrame(arr[0])
-    df = df.drop(['questionType', 'registrationNumber'], axis=1)
-    df = df[df.columns[::-1]]
+    df.answer = pd.to_numeric(df.answer)
+    df = df.loc[df['questionType']=='requiredSkill']
     print('arr2df', df)
 
     return df
